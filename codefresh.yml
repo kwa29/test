@@ -1,16 +1,11 @@
 version: '1.0'
 steps:
   build_image:
+    title: Building Image
     type: build
-    description: Building the image...
-    image-name: myuser/myservice
-    tag: develop # ${{CF_BRANCH}}
-
-  perform_tests:
-    image_name: node:5
+    #Important: rename this image to to a valid repository in your registry. For example: myUserName/vote
+    image_name: codefresh/example
+    #The directory should be relative to git repository that is used for cloning
     working_directory: ${{main_clone}}
-    description: Performing unit tests...
-    commands:
-      - npm install gulp -g 
-      - npm install
-      - gulp unit_test
+    #Dockerfile location should be relative to the working directory
+    dockerfile: Dockerfile
