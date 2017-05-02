@@ -1,11 +1,10 @@
 version: '1.0'
+
 steps:
-  build_image:
-    title: Building Image
+
+  build_prj:
     type: build
-    #Important: rename this image to to a valid repository in your registry. For example: myUserName/vote
-    image_name: codefresh/example
-    #The directory should be relative to git repository that is used for cloning
-    working_directory: ${{main_clone}}
-    #Dockerfile location should be relative to the working directory
+    description: Build an Image with the Dockerfile in Root Directory
+    image_name: codefreshio/yaml-example-dockerfile-inroot
     dockerfile: Dockerfile
+    tag: ${{CF_BRANCH}}
